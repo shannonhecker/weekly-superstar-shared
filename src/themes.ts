@@ -16,23 +16,35 @@ export const THEMES: Record<string, { emoji: string; accent: string; deeper: str
   magic:    { emoji: '🌙', accent: '#C6ACE8', deeper: '#7C52B8', label: 'Magic',    tagline: '🌙 ✨ 🔮' },
 }
 
-export const PET_CHAINS: Record<string, { label: string; stages: string[]; names: string[] }> = {
-  cats:     { label: 'Cat family',      stages: ['🐱', '🐈', '🐯', '🦁'], names: ['kitten', 'cat', 'tiger', 'lion'] },
-  dogs:     { label: 'Dog family',      stages: ['🐶', '🐕', '🦊', '🐺'], names: ['puppy', 'dog', 'fox', 'wolf'] },
-  birds:    { label: 'Bird family',     stages: ['🐥', '🐤', '🦆', '🦢'], names: ['chick', 'fledgling', 'duck', 'swan'] },
-  dinos:    { label: 'Dino family',     stages: ['🦎', '🐊', '🦖', '🐉'], names: ['lizard', 'croc', 'T-rex', 'dragon'] },
-  sea:      { label: 'Sea family',      stages: ['🐠', '🐬', '🦈', '🐳'], names: ['fish', 'dolphin', 'shark', 'whale'] },
-  bugs:     { label: 'Garden family',   stages: ['🐛', '🐌', '🐝', '🦋'], names: ['caterpillar', 'snail', 'bee', 'butterfly'] },
-  bears:    { label: 'Bear family',     stages: ['🐨', '🐼', '🐻', '🐻‍❄️'], names: ['koala', 'panda', 'bear', 'polar bear'] },
-  royal:    { label: 'Royal family',    stages: ['🐸', '👸', '👑', '🏰'], names: ['frog prince', 'princess', 'crown', 'castle'] },
-  space:    { label: 'Space family',    stages: ['👽', '🛸', '🚀', '🌟'], names: ['alien', 'UFO', 'rocket', 'star'] },
-  plants:   { label: 'Plant family',    stages: ['🌱', '🌿', '🌸', '🌳'], names: ['seedling', 'herb', 'blossom', 'tree'] },
-  sweets:   { label: 'Sweet family',    stages: ['🍪', '🧁', '🎂', '🍰'], names: ['cookie', 'cupcake', 'cake', 'slice'] },
-  weather:  { label: 'Weather family',  stages: ['💧', '🌧️', '🌈', '☀️'], names: ['droplet', 'rain cloud', 'rainbow', 'sunshine'] },
-  mythic:   { label: 'Mythic family',   stages: ['🪄', '🔮', '🧚', '🧙'], names: ['wand', 'crystal ball', 'fairy', 'wizard'] },
-  robots:   { label: 'Robot family',    stages: ['⚙️', '🤖', '🦾', '🛰️'], names: ['gear', 'robot', 'mech', 'satellite'] },
-  vehicles: { label: 'Vehicle family',  stages: ['🛴', '🚲', '🏍️', '🏎️'], names: ['scooter', 'bike', 'motorbike', 'race car'] },
-  gems:     { label: 'Treasure family', stages: ['🪨', '💎', '💍', '🏆'], names: ['rock', 'gem', 'ring', 'trophy'] },
+export type ChainRarity = 'common' | 'rare'
+
+export const PET_CHAINS: Record<string, { label: string; stages: string[]; names: string[]; rarity?: ChainRarity }> = {
+  cats:      { label: 'Cat family',      stages: ['🐱', '🐈', '🐯', '🦁'], names: ['kitten', 'cat', 'tiger', 'lion'] },
+  dogs:      { label: 'Dog family',      stages: ['🐶', '🐕', '🦊', '🐺'], names: ['puppy', 'dog', 'fox', 'wolf'] },
+  birds:     { label: 'Bird family',     stages: ['🐥', '🐤', '🦆', '🦢'], names: ['chick', 'fledgling', 'duck', 'swan'] },
+  dinos:     { label: 'Dino family',     stages: ['🦎', '🐊', '🦖', '🐉'], names: ['lizard', 'croc', 'T-rex', 'dragon'] },
+  sea:       { label: 'Sea family',      stages: ['🐠', '🐬', '🦈', '🐳'], names: ['fish', 'dolphin', 'shark', 'whale'] },
+  bugs:      { label: 'Garden family',   stages: ['🐛', '🐌', '🐝', '🦋'], names: ['caterpillar', 'snail', 'bee', 'butterfly'] },
+  bears:     { label: 'Bear family',     stages: ['🐨', '🐼', '🐻', '🐻‍❄️'], names: ['koala', 'panda', 'bear', 'polar bear'] },
+  royal:     { label: 'Royal family',    stages: ['🐸', '👸', '👑', '🏰'], names: ['frog prince', 'princess', 'crown', 'castle'] },
+  space:     { label: 'Space family',    stages: ['👽', '🛸', '🚀', '🌟'], names: ['alien', 'UFO', 'rocket', 'star'] },
+  plants:    { label: 'Plant family',    stages: ['🌱', '🌿', '🌸', '🌳'], names: ['seedling', 'herb', 'blossom', 'tree'] },
+  sweets:    { label: 'Sweet family',    stages: ['🍪', '🧁', '🎂', '🍰'], names: ['cookie', 'cupcake', 'cake', 'slice'] },
+  weather:   { label: 'Weather family',  stages: ['💧', '🌧️', '🌈', '☀️'], names: ['droplet', 'rain cloud', 'rainbow', 'sunshine'] },
+  mythic:    { label: 'Mythic family',   stages: ['🪄', '🔮', '🧚', '🧙'], names: ['wand', 'crystal ball', 'fairy', 'wizard'] },
+  robots:    { label: 'Robot family',    stages: ['⚙️', '🤖', '🦾', '🛰️'], names: ['gear', 'robot', 'mech', 'satellite'] },
+  vehicles:  { label: 'Vehicle family',  stages: ['🛴', '🚲', '🏍️', '🏎️'], names: ['scooter', 'bike', 'motorbike', 'race car'] },
+  gems:      { label: 'Treasure family', stages: ['🪨', '💎', '💍', '🏆'], names: ['rock', 'gem', 'ring', 'trophy'] },
+  balls:     { label: 'Ball family',     stages: ['⚽', '🏀', '🏈', '🏉'], names: ['soccer ball', 'basketball', 'football', 'rugby'] },
+  trains:    { label: 'Train family',    stages: ['🚂', '🚃', '🚆', '🚄'], names: ['steam engine', 'wagon', 'tram', 'bullet train'] },
+  planes:    { label: 'Sky family',      stages: ['🪁', '🎈', '✈️', '🚁'], names: ['kite', 'balloon', 'plane', 'helicopter'] },
+  moons:     { label: 'Moon family',     stages: ['🌑', '🌒', '🌓', '🌕'], names: ['new moon', 'crescent', 'half moon', 'full moon'] },
+  sun:       { label: 'Sunny family',    stages: ['⛅', '🌤️', '🌞', '☀️'], names: ['cloudy', 'partly sunny', 'smiling sun', 'sunshine'] },
+  stars:     { label: 'Star family',     stages: ['⭐', '🌟', '✨', '💫'], names: ['star', 'glowing star', 'sparkles', 'dizzy'] },
+  phoenix:   { label: 'Phoenix family',  stages: ['🥚', '🔥', '🐦', '🦅'], names: ['egg', 'ember', 'firebird', 'phoenix'], rarity: 'rare' },
+  celestial: { label: 'Celestial family',stages: ['🌌', '☄️', '🌠', '🌟'], names: ['galaxy', 'comet', 'shooting star', 'star'], rarity: 'rare' },
+  mermaid:   { label: 'Mermaid family',  stages: ['🐚', '🪸', '🧜', '🌊'], names: ['shell', 'coral', 'mermaid', 'ocean'], rarity: 'rare' },
+  ninja:     { label: 'Ninja family',    stages: ['🥷', '⚔️', '🏯', '👑'], names: ['ninja', 'swords', 'castle', 'crown'], rarity: 'rare' },
 }
 
 export function stageToChainIdx(stage: number, chainLen: number): number {
@@ -82,6 +94,8 @@ export const ACTIVE_CHAIN_KEYS = [
   'cats', 'dogs', 'birds', 'dinos', 'sea', 'bugs', 'bears',
   'royal', 'space', 'plants', 'sweets', 'weather',
   'mythic', 'robots', 'vehicles', 'gems',
+  'balls', 'trains', 'planes', 'moons', 'sun', 'stars',
+  'phoenix', 'celestial', 'mermaid', 'ninja',
 ]
 
 export function assignChainsForBoard(kidIds: string[], weekKey: string): Record<string, string> {
@@ -95,13 +109,29 @@ export function assignChainsForBoard(kidIds: string[], weekKey: string): Record<
   return out
 }
 
+const RARE_CHANCE = 0.08
+
 export function pickFreshChain(recentChainKeys: string[] = []): string {
   const recent = new Set(recentChainKeys.filter(Boolean))
-  const pool = ACTIVE_CHAIN_KEYS.filter((k) => PET_CHAINS[k] && !recent.has(k))
+  const commonPool = ACTIVE_CHAIN_KEYS.filter(
+    (k) => PET_CHAINS[k] && (PET_CHAINS[k].rarity ?? 'common') === 'common' && !recent.has(k),
+  )
+  const rarePool = ACTIVE_CHAIN_KEYS.filter(
+    (k) => PET_CHAINS[k] && PET_CHAINS[k].rarity === 'rare' && !recent.has(k),
+  )
+  const rollRare = Math.random() < RARE_CHANCE && rarePool.length > 0
+  const preferredSource = rollRare
+    ? rarePool
+    : (commonPool.length > 0 ? commonPool : rarePool)
   const fallback = ACTIVE_CHAIN_KEYS.filter((k) => PET_CHAINS[k])
-  const source = pool.length > 0 ? pool : fallback
-  if (source.length === 0) return 'cats'
-  return source[Math.floor(Math.random() * source.length)]
+  const pool = preferredSource.length > 0 ? preferredSource : fallback
+  if (pool.length === 0) return 'cats'
+  return pool[Math.floor(Math.random() * pool.length)]
+}
+
+export function isRareChain(chainKey: string | null | undefined): boolean {
+  if (!chainKey) return false
+  return PET_CHAINS[chainKey]?.rarity === 'rare'
 }
 
 export function petAtStage(chainKey: string, stage: number) {
@@ -203,6 +233,36 @@ export const PET_ASSET: Record<string, [string, string]> = {
   '🏉': ['Activities', 'Rugby Football'],
   '🏀': ['Activities', 'Basketball'],
   '🚂': ['Travel and places', 'Locomotive'],
+  '⚽': ['Activities', 'Soccer Ball'],
+  '🏈': ['Activities', 'American Football'],
+  '🚃': ['Travel and places', 'Railway Car'],
+  '🚆': ['Travel and places', 'Train'],
+  '🚄': ['Travel and places', 'High-Speed Train'],
+  '🪁': ['Activities', 'Kite'],
+  '🎈': ['Activities', 'Balloon'],
+  '✈️': ['Travel and places', 'Airplane'],
+  '🚁': ['Travel and places', 'Helicopter'],
+  '🌑': ['Travel and places', 'New Moon'],
+  '🌒': ['Travel and places', 'Waxing Crescent Moon'],
+  '🌓': ['Travel and places', 'First Quarter Moon'],
+  '🌕': ['Travel and places', 'Full Moon'],
+  '⛅': ['Travel and places', 'Sun Behind Cloud'],
+  '🌤️': ['Travel and places', 'Sun Behind Small Cloud'],
+  '🌞': ['Travel and places', 'Sun with Face'],
+  '💫': ['Travel and places', 'Dizzy'],
+  '🔥': ['Travel and places', 'Fire'],
+  '🐦': ['Animals', 'Bird'],
+  '🦅': ['Animals', 'Eagle'],
+  '🌌': ['Travel and places', 'Milky Way'],
+  '☄️': ['Travel and places', 'Comet'],
+  '🌠': ['Travel and places', 'Shooting Star'],
+  '🐚': ['Animals', 'Spiral Shell'],
+  '🪸': ['Animals', 'Coral'],
+  '🧜': ['People with professions', 'Merperson'],
+  '🌊': ['Travel and places', 'Water Wave'],
+  '🥷': ['People with professions', 'Ninja'],
+  '⚔️': ['Objects', 'Crossed Swords'],
+  '🏯': ['Travel and places', 'Japanese Castle'],
 }
 
 export function animatedFluentUrl(emoji: string): string | null {
