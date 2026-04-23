@@ -200,6 +200,9 @@ export const PET_ASSET: Record<string, [string, string]> = {
   '💎': ['Objects', 'Gem Stone'],
   '💍': ['Objects', 'Ring'],
   '🏆': ['Activities', 'Trophy'],
+  '🏉': ['Activities', 'Rugby Football'],
+  '🏀': ['Activities', 'Basketball'],
+  '🚂': ['Travel and places', 'Locomotive'],
 }
 
 export function animatedFluentUrl(emoji: string): string | null {
@@ -224,6 +227,7 @@ export const EGG_NAMES: Record<string, string> = {
 export const KID_AVATARS: string[] = [
   '🦄', '🐱', '🐶', '🦊', '🐼', '🐨', '🦁', '🐯',
   '🐸', '🐻', '🐰', '🐵', '🦖', '🦋', '🐙', '🦉',
+  '🏉', '🏀', '🚂',
 ]
 
 export const DEFAULT_ACTIVITIES = [
