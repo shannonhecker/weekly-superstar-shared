@@ -16,9 +16,7 @@ export const THEMES: Record<string, { emoji: string; accent: string; deeper: str
   magic:    { emoji: '🌙', accent: '#C6ACE8', deeper: '#7C52B8', label: 'Magic',    tagline: '🌙 ✨ 🔮' },
 }
 
-export type ChainRarity = 'common' | 'rare'
-
-export const PET_CHAINS: Record<string, { label: string; stages: string[]; names: string[]; rarity?: ChainRarity }> = {
+export const PET_CHAINS: Record<string, { label: string; stages: string[]; names: string[] }> = {
   cats:      { label: 'Cat family',      stages: ['🐱', '🐈', '🐯', '🦁'], names: ['kitten', 'cat', 'tiger', 'lion'] },
   dogs:      { label: 'Dog family',      stages: ['🐶', '🐕', '🦊', '🐺'], names: ['puppy', 'dog', 'fox', 'wolf'] },
   birds:     { label: 'Bird family',     stages: ['🐥', '🐤', '🦆', '🦢'], names: ['chick', 'fledgling', 'duck', 'swan'] },
@@ -41,10 +39,10 @@ export const PET_CHAINS: Record<string, { label: string; stages: string[]; names
   moons:     { label: 'Moon family',     stages: ['🌑', '🌒', '🌓', '🌕'], names: ['new moon', 'crescent', 'half moon', 'full moon'] },
   sun:       { label: 'Sunny family',    stages: ['⛅', '🌤️', '🌞', '☀️'], names: ['cloudy', 'partly sunny', 'smiling sun', 'sunshine'] },
   stars:     { label: 'Star family',     stages: ['⭐', '🌟', '✨', '💫'], names: ['star', 'glowing star', 'sparkles', 'dizzy'] },
-  phoenix:   { label: 'Phoenix family',  stages: ['🥚', '🔥', '🐦', '🦅'], names: ['egg', 'ember', 'firebird', 'phoenix'], rarity: 'rare' },
-  celestial: { label: 'Celestial family',stages: ['🌌', '☄️', '🌠', '🌟'], names: ['galaxy', 'comet', 'shooting star', 'star'], rarity: 'rare' },
-  mermaid:   { label: 'Mermaid family',  stages: ['🐚', '🪸', '🧜', '🌊'], names: ['shell', 'coral', 'mermaid', 'ocean'], rarity: 'rare' },
-  ninja:     { label: 'Ninja family',    stages: ['🥷', '⚔️', '🏯', '👑'], names: ['ninja', 'swords', 'castle', 'crown'], rarity: 'rare' },
+  phoenix:   { label: 'Phoenix family',  stages: ['🥚', '🔥', '🐦', '🦅'], names: ['egg', 'ember', 'firebird', 'phoenix'] },
+  celestial: { label: 'Celestial family',stages: ['🌌', '☄️', '🌠', '🌟'], names: ['galaxy', 'comet', 'shooting star', 'star'] },
+  mermaid:   { label: 'Mermaid family',  stages: ['🐚', '🪸', '🧜', '🌊'], names: ['shell', 'coral', 'mermaid', 'ocean'] },
+  ninja:     { label: 'Ninja family',    stages: ['🥷', '⚔️', '🏯', '👑'], names: ['ninja', 'swords', 'castle', 'crown'] },
 }
 
 export function stageToChainIdx(stage: number, chainLen: number): number {
@@ -109,29 +107,13 @@ export function assignChainsForBoard(kidIds: string[], weekKey: string): Record<
   return out
 }
 
-const RARE_CHANCE = 0.08
-
 export function pickFreshChain(recentChainKeys: string[] = []): string {
   const recent = new Set(recentChainKeys.filter(Boolean))
-  const commonPool = ACTIVE_CHAIN_KEYS.filter(
-    (k) => PET_CHAINS[k] && (PET_CHAINS[k].rarity ?? 'common') === 'common' && !recent.has(k),
-  )
-  const rarePool = ACTIVE_CHAIN_KEYS.filter(
-    (k) => PET_CHAINS[k] && PET_CHAINS[k].rarity === 'rare' && !recent.has(k),
-  )
-  const rollRare = Math.random() < RARE_CHANCE && rarePool.length > 0
-  const preferredSource = rollRare
-    ? rarePool
-    : (commonPool.length > 0 ? commonPool : rarePool)
+  const pool = ACTIVE_CHAIN_KEYS.filter((k) => PET_CHAINS[k] && !recent.has(k))
   const fallback = ACTIVE_CHAIN_KEYS.filter((k) => PET_CHAINS[k])
-  const pool = preferredSource.length > 0 ? preferredSource : fallback
-  if (pool.length === 0) return 'cats'
-  return pool[Math.floor(Math.random() * pool.length)]
-}
-
-export function isRareChain(chainKey: string | null | undefined): boolean {
-  if (!chainKey) return false
-  return PET_CHAINS[chainKey]?.rarity === 'rare'
+  const source = pool.length > 0 ? pool : fallback
+  if (source.length === 0) return 'cats'
+  return source[Math.floor(Math.random() * source.length)]
 }
 
 export function petAtStage(chainKey: string, stage: number) {
