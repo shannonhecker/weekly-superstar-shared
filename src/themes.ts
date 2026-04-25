@@ -284,3 +284,79 @@ export const DEFAULT_ACTIVITIES = [
   { id: 'walk',        label: 'Walk',     emoji: '🚶', color: '#A8E6C1' },
   { id: 'special',     label: 'Special!', emoji: '⭐', color: '#FFE48F' },
 ]
+
+// Picker palette for the parent's per-task colour chip.
+// Pulled from the DEFAULT_ACTIVITIES pastels and rounded out with a few brand-safe
+// extras so a parent has enough variety for a 10-task board without two activities
+// looking identical.
+export const ACTIVITY_COLORS: string[] = [
+  '#B5A8F2', // lavender
+  '#A0E7E5', // mint
+  '#A8D8F0', // sky
+  '#FFD3A5', // peach
+  '#FBA59C', // coral
+  '#FFE082', // butter
+  '#FFAFA3', // salmon
+  '#A8E6C1', // sage
+  '#F4B6D9', // bubblegum
+  '#C6ACE8', // amethyst
+  '#FFD6E8', // blush
+  '#D0E8B5', // lime
+]
+
+// Kid-friendly emoji picker for activities. Order is rough categories: hygiene,
+// meals, sleep, dress, school, reading, exercise, hobbies, chores, special.
+export const ACTIVITY_EMOJIS: string[] = [
+  '😴', '🛏️', '🛁', '🚿', '🪥', '🧼',
+  '🍳', '🥣', '🍎', '🥪', '🥛', '🍱',
+  '👕', '👟', '🧥', '🎒',
+  '📖', '📚', '✏️', '🎨', '🎵', '🎹',
+  '🏃', '⚽', '🚴', '🏊', '🧘', '🚶',
+  '🪀', '🧩', '🧱', '🎲',
+  '🐶', '🐱', '🌱', '🧹',
+  '⭐', '🌟', '✨', '🎉',
+]
+
+// Preset task bundles parents can apply with one tap. Applying merges by id —
+// existing activities with matching ids get updated, new ones get appended,
+// respecting the 10-cap (the UI enforces it; this constant is just the recipe).
+export const ACTIVITY_PRESETS: Record<string, { label: string; activities: Array<{ id: string; label: string; emoji: string; color: string }> }> = {
+  'morning-routine': {
+    label: 'Morning routine',
+    activities: [
+      { id: 'wake',      label: 'Wake up',  emoji: '⏰', color: '#FFE082' },
+      { id: 'breakfast', label: 'Brekkie',  emoji: '🍳', color: '#FFD3A5' },
+      { id: 'teeth',     label: 'Teeth',    emoji: '🪥', color: '#A8D8F0' },
+      { id: 'dressed',   label: 'Get dressed', emoji: '👕', color: '#F4B6D9' },
+      { id: 'shoes',     label: 'Shoes',    emoji: '👟', color: '#FBA59C' },
+    ],
+  },
+  'school-day': {
+    label: 'School day',
+    activities: [
+      { id: 'school-book', label: 'School',   emoji: '📖', color: '#FFE082' },
+      { id: 'homework',    label: 'Homework', emoji: '✏️', color: '#A8D8F0' },
+      { id: 'fun-book',    label: 'Reading',  emoji: '📚', color: '#FFAFA3' },
+      { id: 'pack-bag',    label: 'Pack bag', emoji: '🎒', color: '#C6ACE8' },
+    ],
+  },
+  'toddler-basics': {
+    label: 'Toddler basics',
+    activities: [
+      { id: 'sleep',     label: 'Sleep',    emoji: '😴', color: '#B5A8F2' },
+      { id: 'breakfast', label: 'Eat',      emoji: '🥣', color: '#FFD3A5' },
+      { id: 'bath',      label: 'Bath',     emoji: '🛁', color: '#A0E7E5' },
+      { id: 'play',      label: 'Play',     emoji: '🪀', color: '#A8E6C1' },
+      { id: 'teeth',     label: 'Teeth',    emoji: '🪥', color: '#A8D8F0' },
+    ],
+  },
+  'chores': {
+    label: 'Chores',
+    activities: [
+      { id: 'tidy-room',  label: 'Tidy room',  emoji: '🧹', color: '#A8E6C1' },
+      { id: 'feed-pet',   label: 'Feed pet',   emoji: '🐶', color: '#FFD3A5' },
+      { id: 'make-bed',   label: 'Make bed',   emoji: '🛏️', color: '#B5A8F2' },
+      { id: 'clear-plate', label: 'Clear plate', emoji: '🍽️', color: '#FFAFA3' },
+    ],
+  },
+}
