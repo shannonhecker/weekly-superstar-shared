@@ -3,17 +3,23 @@
 // Soft pastel themes — accent is the main color; deeper is for high-contrast
 // text/icons. Pet emoji per kid is independent of theme — see PET_CHAINS below.
 
+// Earthy palette retune (Phase 2 brand sweep). Each kid keeps their chosen
+// theme name + emoji + tagline. Accent + deeper hex values pulled toward
+// the muted/earthy world so a Board with multiple kids reads as one
+// coherent surface family rather than a disco of saturated brand greens
+// and purples. Original WCAG ratios preserved on `deeper` (≥4.5:1 on
+// cream).
 export const THEMES: Record<string, { emoji: string; accent: string; deeper: string; label: string; tagline: string }> = {
-  football: { emoji: '⚽', accent: '#88D9A2', deeper: '#2E9C5E', label: 'Football', tagline: '⚽ 🥅 👟' },
-  dinosaur: { emoji: '🦕', accent: '#87D4D0', deeper: '#2D9C97', label: 'Dinosaur', tagline: '🦕 🌋 🦴' },
-  unicorn:  { emoji: '🦄', accent: '#D4B0E8', deeper: '#9B59B6', label: 'Unicorn',  tagline: '🦄 🌈 ✨' },
-  animals:  { emoji: '🐾', accent: '#F4B583', deeper: '#C77846', label: 'Animals',  tagline: '🐾 🐶 🐱' },
-  rocket:   { emoji: '🚀', accent: '#A4B4F0', deeper: '#5468C9', label: 'Space',    tagline: '🚀 🪐 🌟' },
-  princess: { emoji: '👑', accent: '#F4A6D9', deeper: '#D14B9C', label: 'Princess', tagline: '👑 💎 🌷' },
-  ocean:    { emoji: '🌊', accent: '#8FCCE4', deeper: '#2A7CA8', label: 'Ocean',    tagline: '🌊 🐚 🐬' },
-  garden:   { emoji: '🌼', accent: '#B7DD9E', deeper: '#4E8C3A', label: 'Garden',   tagline: '🌼 🐞 🌿' },
-  robot:    { emoji: '🤖', accent: '#BCC7DA', deeper: '#54678A', label: 'Robot',    tagline: '🤖 ⚙️ ⚡' },
-  magic:    { emoji: '🌙', accent: '#C6ACE8', deeper: '#7C52B8', label: 'Magic',    tagline: '🌙 ✨ 🔮' },
+  football: { emoji: '⚽', accent: '#B5C99A', deeper: '#6B8060', label: 'Football', tagline: '⚽ 🥅 👟' },
+  dinosaur: { emoji: '🦕', accent: '#A8C2A1', deeper: '#5C7A55', label: 'Dinosaur', tagline: '🦕 🌋 🦴' },
+  unicorn:  { emoji: '🦄', accent: '#D4B5C4', deeper: '#8B6F87', label: 'Unicorn',  tagline: '🦄 🌈 ✨' },
+  animals:  { emoji: '🐾', accent: '#E8B796', deeper: '#C77846', label: 'Animals',  tagline: '🐾 🐶 🐱' },
+  rocket:   { emoji: '🚀', accent: '#ABC9D8', deeper: '#4F7A91', label: 'Space',    tagline: '🚀 🪐 🌟' },
+  princess: { emoji: '👑', accent: '#E8B5A8', deeper: '#B85450', label: 'Princess', tagline: '👑 💎 🌷' },
+  ocean:    { emoji: '🌊', accent: '#A8C5C9', deeper: '#4A7984', label: 'Ocean',    tagline: '🌊 🐚 🐬' },
+  garden:   { emoji: '🌼', accent: '#C2D5A0', deeper: '#6B8B4F', label: 'Garden',   tagline: '🌼 🐞 🌿' },
+  robot:    { emoji: '🤖', accent: '#C2BBAE', deeper: '#7B6E5D', label: 'Robot',    tagline: '🤖 ⚙️ ⚡' },
+  magic:    { emoji: '🌙', accent: '#B4A8C9', deeper: '#6B5C82', label: 'Magic',    tagline: '🌙 ✨ 🔮' },
 }
 
 export const PET_CHAINS: Record<string, { label: string; stages: string[]; names: string[] }> = {
