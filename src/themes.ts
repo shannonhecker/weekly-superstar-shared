@@ -20,6 +20,10 @@ export const THEMES: Record<string, { emoji: string; accent: string; deeper: str
   garden:   { emoji: '🌼', accent: '#C2D5A0', deeper: '#6B8B4F', label: 'Garden',   tagline: '🌼 🐞 🌿' },
   robot:    { emoji: '🤖', accent: '#C2BBAE', deeper: '#7B6E5D', label: 'Robot',    tagline: '🤖 ⚙️ ⚡' },
   magic:    { emoji: '🌙', accent: '#B4A8C9', deeper: '#6B5C82', label: 'Magic',    tagline: '🌙 ✨ 🔮' },
+  rugby:    { emoji: '🏉', accent: '#D4B59E', deeper: '#8B6651', label: 'Rugby',    tagline: '🏉 ⚡ 👟' },
+  train:    { emoji: '🚂', accent: '#BCA89A', deeper: '#6E5D4F', label: 'Train',    tagline: '🚂 🚃 🛤️' },
+  fairy:    { emoji: '🧚', accent: '#DBC0D4', deeper: '#7A5C82', label: 'Fairy',    tagline: '🧚 🌸 ✨' },
+  bear:     { emoji: '🐻', accent: '#C8A98C', deeper: '#6F4E36', label: 'Bear',     tagline: '🐻 🍯 🌲' },
 }
 
 export const PET_CHAINS: Record<string, { label: string; stages: string[]; names: string[] }> = {
@@ -270,6 +274,10 @@ export const EGG_NAMES: Record<string, string> = {
   garden:   'Bloom Egg',
   robot:    'Circuit Egg',
   magic:    'Moonlit Egg',
+  rugby:    'Scrum Egg',
+  train:    'Steam Egg',
+  fairy:    'Pixie Egg',
+  bear:     'Honey Egg',
 }
 
 export const KID_AVATARS: string[] = [
