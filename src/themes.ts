@@ -60,7 +60,7 @@ export function stageToChainIdx(stage: number, chainLen: number): number {
   return Math.min(chainLen - 1, Math.floor((stage - 1) * chainLen / 6))
 }
 
-export const HATCH_GOAL = 50
+export const HATCH_GOAL = 60
 
 export function progressToStage(stars: number, goal: number = HATCH_GOAL): number {
   if (goal <= 0) return 0
