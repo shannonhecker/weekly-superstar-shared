@@ -38,6 +38,22 @@ export function getWeekKey(): string {
   return `${y}-${m}-${d}`
 }
 
+export function isBirthdayWeek(birthday: string | null | undefined, now: Date = new Date()): boolean {
+  if (!birthday) return false
+  const match = /^\d{4}-(\d{2})-(\d{2})$/.exec(birthday)
+  if (!match) return false
+  const [, mm, dd] = match
+  const { monday } = getCurrentWeek()
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(monday)
+    d.setDate(monday.getDate() + i)
+    const dayMM = String(d.getMonth() + 1).padStart(2, '0')
+    const dayDD = String(d.getDate()).padStart(2, '0')
+    if (dayMM === mm && dayDD === dd) return true
+  }
+  return false
+}
+
 export function formatWeekRange(monday: Date, sunday: Date): string {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   const m1 = months[monday.getMonth()]
