@@ -193,6 +193,8 @@ export const PET_ASSET: Record<string, [string, string]> = {
   '👽': ['Smilies', 'Alien'],
   '🛸': ['Travel and places', 'Flying Saucer'],
   '🌟': ['Travel and places', 'Glowing Star'],
+  '⭐': ['Travel and places', 'Star'],
+  '✨': ['Activities', 'Sparkles'],
   '🌱': ['Animals', 'Seedling'],
   '🌿': ['Animals', 'Herb'],
   '🌸': ['Animals', 'Cherry Blossom'],
