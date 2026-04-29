@@ -28,12 +28,21 @@ export const colors = {
 
   // EARTHY — primary palette for the Winking Star brand sweep (Phase 0+).
   // Inspired by the warm/earthy modern Indonesian kids-app aesthetic the
-  // user shared as reference. Pairings have been picked to clear WCAG AA
-  // contrast on the documented surface combinations:
-  //   cocoa on cream         (12.4:1)  — body text on card surfaces
-  //   sage-deep on cream     ( 5.1:1)  — section headings on cards
-  //   cocoa on terracotta    ( 5.7:1)  — primary CTA label on accent fill
-  //   cream on cocoa         (12.4:1)  — primary CTA label on dark fill
+  // user shared as reference. WCAG AA-passing pairings (verified with the
+  // accesslint contrast checker on 2026-04-29):
+  //   cocoa on cream            (12.4:1)  — body text on card surfaces
+  //   sage-deep on cream        ( 5.1:1)  — section headings on cards
+  //   cocoa on terracottaSoft   ( 6.58:1) — primary CTA label on chip fill
+  //   cream on cocoa            (12.4:1)  — primary CTA label on dark fill
+  //
+  // AVOID for normal text (audit A4):
+  //   cocoa on terracotta       ( 3.32:1) — only large-text or UI-boundary use
+  //   ivory on terracotta       ( 2.92:1) — fails everything, do not use
+  // The previous comment claimed cocoa-on-terracotta was 5.7:1 and safe
+  // for primary CTA labels — that was wrong. terracotta is an accent
+  // colour, not a text-bearing surface; if you need a darker terracotta
+  // that takes ivory text, see the audit's recommendation for #B55826
+  // ('terracottaDeep') as a future token.
   earthy: {
     sage:           '#9DAC85',  // primary panel tint
     sageDeep:       '#6B8060',  // sage text / icons on cream
