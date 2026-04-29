@@ -39,6 +39,11 @@ export const colors = {
     sageDeep:       '#6B8060',  // sage text / icons on cream
     cream:          '#F8F1E4',  // card surface
     ivory:          '#FFFAF0',  // page background
+    // Inner-card surface that sits *on top of* cream / ivory. Slightly
+    // brighter than ivory so a card-on-page reads as elevated without
+    // needing a shadow. Was inlined as a `'#FFFDF7'` literal in 14
+    // surfaces of the web app before being lifted to a token (audit Q5).
+    card:           '#FFFDF7',
     terracotta:     '#D87C4A',  // accent / secondary CTA fill
     terracottaSoft: '#F4C8A8',  // chip fills, soft highlights, badge pings
     cocoa:          '#5A3A2E',  // primary CTA fill, body text
