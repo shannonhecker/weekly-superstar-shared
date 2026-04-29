@@ -192,6 +192,13 @@ export const PET_ASSET: Record<string, [string, string]> = {
   '🏰': ['Travel and places', 'Castle'],
   '👽': ['Smilies', 'Alien'],
   '🛸': ['Travel and places', 'Flying Saucer'],
+  // ⭐ (U+2B50) and ✨ (U+2728) are stages 0 and 2 of the `stars` chain.
+  // They were declared as "added" in PR #7 but the squash-merge dropped
+  // these two entries — without them, `animatedFluentUrl(⭐)` returns
+  // null, BannerPet bails before render, and PetGallery shows an empty
+  // box for Nathan's "Stary" favourite. Restored 2026-04-29.
+  '⭐': ['Travel and places', 'Star'],
+  '✨': ['Activities', 'Sparkles'],
   '🌟': ['Travel and places', 'Glowing Star'],
   '🌱': ['Animals', 'Seedling'],
   '🌿': ['Animals', 'Herb'],
