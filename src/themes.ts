@@ -24,6 +24,9 @@ export const THEMES: Record<string, { emoji: string; accent: string; deeper: str
   train:    { emoji: '🚂', accent: '#BCA89A', deeper: '#6E5D4F', label: 'Train',    tagline: '🚂 🚃 🛤️' },
   fairy:    { emoji: '🧚', accent: '#DBC0D4', deeper: '#7A5C82', label: 'Fairy',    tagline: '🧚 🌸 ✨' },
   bear:     { emoji: '🐻', accent: '#C8A98C', deeper: '#6F4E36', label: 'Bear',     tagline: '🐻 🍯 🌲' },
+  deer:     { emoji: '🦌', accent: '#C5D4B5', deeper: '#6B7F58', label: 'Deer',     tagline: '🦌 🌲 🌼' },
+  elephant: { emoji: '🐘', accent: '#C2D8E5', deeper: '#5C7484', label: 'Elephant', tagline: '🐘 🌳 ⭐' },
+  fox:      { emoji: '🦊', accent: '#EFCDB6', deeper: '#8C5A3D', label: 'Fox',      tagline: '🦊 🌷 ☁️' },
 }
 
 export const PET_CHAINS: Record<string, { label: string; stages: string[]; names: string[] }> = {
@@ -285,6 +288,9 @@ export const EGG_NAMES: Record<string, string> = {
   train:    'Steam Egg',
   fairy:    'Pixie Egg',
   bear:     'Honey Egg',
+  deer:     'Woodland Egg',
+  elephant: 'Misty Egg',
+  fox:      'Foxglove Egg',
 }
 
 export const KID_AVATARS: string[] = [
