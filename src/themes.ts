@@ -260,9 +260,14 @@ export const PET_ASSET: Record<string, [string, string]> = {
   '🌠': ['Travel and places', 'Shooting Star'],
   '🐚': ['Animals', 'Spiral Shell'],
   '🪸': ['Animals', 'Coral'],
-  '🧜': ['People with professions', 'Merperson'],
+  // Microsoft's Animated Fluent Emoji repo files Ninja and Merperson
+  // under `Emojis/People/`, not `Emojis/People with professions/`.
+  // PR #51 (TestFlight build #11) confirmed jsdelivr returns 403 for
+  // the `People with professions/Ninja.png` and `…/Merperson.png`
+  // paths — only `People/Ninja.png` and `People/Merperson.png` resolve.
+  '🧜': ['People', 'Merperson'],
   '🌊': ['Travel and places', 'Water Wave'],
-  '🥷': ['People with professions', 'Ninja'],
+  '🥷': ['People', 'Ninja'],
   '⚔️': ['Objects', 'Crossed Swords'],
   '🏯': ['Travel and places', 'Japanese Castle'],
 }
