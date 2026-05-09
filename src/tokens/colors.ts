@@ -53,18 +53,27 @@ export const colors = {
     // needing a shadow. Was inlined as a `'#FFFDF7'` literal in 14
     // surfaces of the web app before being lifted to a token (audit Q5).
     card:           '#FFFDF7',
-    terracotta:     '#D87C4A',  // accent / secondary CTA fill
+    // 2026-05-09 contrast retune for WCAG AA compliance — terracotta and
+    // divider were the two failing tokens flagged by the accesslint sweep:
+    //
+    //   #D87C4A on cream/card backgrounds → 2.79:1 (FAIL 1.4.3 normal text)
+    //   #E8DCC4 on card                   → 1.33:1 (FAIL 1.4.11 UI boundary)
+    //
+    // Darkened to the suggested compliant alternatives that keep the
+    // earthy hue intact (warm orange + tan) so the brand doesn't shift
+    // dramatically — just deepens. The rest of the palette is untouched.
+    terracotta:     '#AE5525',  // accent / secondary CTA fill (was #D87C4A — failed 1.4.3 on cream)
     terracottaSoft: '#F4C8A8',  // chip fills, soft highlights, badge pings
     cocoa:          '#5A3A2E',  // primary CTA fill, body text
     cocoaSoft:      '#8B6651',  // secondary text
-    divider:        '#E8DCC4',  // hairlines on cream
+    divider:        '#B28E45',  // hairlines on cream (was #E8DCC4 — failed 1.4.11)
   },
 
   // Semantic tokens map onto the earthy palette so success / warning /
   // danger reads consistently with the rest of the surface.
   semantic: {
     success: '#6B8060', // earthy.sageDeep
-    warning: '#D87C4A', // earthy.terracotta
+    warning: '#AE5525', // earthy.terracotta (post-AA retune)
     danger:  '#B85450', // muted brick — stays in palette family
   },
 } as const
