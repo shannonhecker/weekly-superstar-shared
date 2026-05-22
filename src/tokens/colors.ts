@@ -94,6 +94,15 @@ export const colors = {
     // body text (~7:1).
     errorBg:   '#F8E5DF',  // inline error pill background (added 2026-05-22)
     errorText: '#8A3A2E',  // inline error pill text (added 2026-05-22)
+    // Destructive-action palette for "Start over", Delete, and the Trash2
+    // settings row. Reuses errorBg by design (same warm-warning surface);
+    // dangerInk is brighter than errorText so destructive CTAs read as
+    // actionable rather than as a failed-state message. Was inlined as
+    // local DANGER_INK / DANGER_BG / DANGER_BORDER in iOS more.tsx before
+    // being lifted to tokens (added 2026-05-22).
+    dangerBg:     '#F8E5DF',  // alias of errorBg for destructive surfaces
+    dangerBorder: '#F0C6BD',  // outline on destructive CTA cards
+    dangerInk:    '#B5453C',  // ink for destructive CTAs and danger settings row
   },
 } as const
 
