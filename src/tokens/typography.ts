@@ -17,6 +17,15 @@ export const typography = {
     display: ['Nunito', 'system-ui', 'sans-serif'],
     body: ['Nunito', 'system-ui', 'sans-serif'],
   },
+  // CTA / button text style — Save, Start Over, primary modal buttons.
+  // fontFamily uses the React Native Nunito_900Black face directly (RN
+  // resolves explicit font faces rather than weight props on iOS). Was
+  // inlined across iOS more.tsx before being lifted to a token (added
+  // 2026-05-22).
+  cta: {
+    fontFamily: 'Nunito_900Black',
+    fontSize: 15,
+  },
 } as const
 
 export type Typography = typeof typography
