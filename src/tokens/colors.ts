@@ -62,19 +62,38 @@ export const colors = {
     // Darkened to the suggested compliant alternatives that keep the
     // earthy hue intact (warm orange + tan) so the brand doesn't shift
     // dramatically — just deepens. The rest of the palette is untouched.
-    terracotta:     '#AE5525',  // accent / secondary CTA fill (was #D87C4A — failed 1.4.3 on cream)
-    terracottaSoft: '#F4C8A8',  // chip fills, soft highlights, badge pings
-    cocoa:          '#5A3A2E',  // primary CTA fill, body text
-    cocoaSoft:      '#8B6651',  // secondary text
-    divider:        '#B28E45',  // hairlines on cream (was #E8DCC4 — failed 1.4.11)
+    terracotta:          '#AE5525',  // accent / secondary CTA fill (was #D87C4A — failed 1.4.3 on cream)
+    terracottaSoft:      '#F4C8A8',  // chip fills, soft highlights, badge pings
+    terracottaSoftHover: '#EAB892',  // hover-darken of terracottaSoft (added 2026-05-22)
+    cocoa:               '#5A3A2E',  // primary CTA fill, body text
+    // Hover-darken of cocoa for primary CTAs. Was inlined as the literal
+    // `'#4A2E25'` in 9+ web surfaces (Landing, SignUp, AuthAction, Board,
+    // NewKidModal, KidEditModal, ShareModal, MysteryBox, etc.) before being
+    // lifted to a token (audit F-W03, brief Task 12). On cream backgrounds
+    // the contrast with cream is ~13:1 (AAA).
+    cocoaDark:           '#4A2E25',  // primary CTA hover state (added 2026-05-22)
+    cocoaSoft:           '#8B6651',  // secondary text
+    divider:             '#B28E45',  // hairlines on cream (was #E8DCC4 — failed 1.4.11)
+    // Cream-tinted hairline used for progress-bar borders on cream/ivory
+    // backgrounds where the standard `divider` (a warm tan) would read as
+    // too prominent. Was inlined as `'#EFE1C8'` at Board.jsx:961 + 1065
+    // for the kid stats progress bar (audit F-W12, brief Task 12).
+    dividerCream:        '#EFE1C8',  // soft divider for progress bars on cream
   },
 
   // Semantic tokens map onto the earthy palette so success / warning /
   // danger reads consistently with the rest of the surface.
   semantic: {
-    success: '#6B8060', // earthy.sageDeep
-    warning: '#AE5525', // earthy.terracotta (post-AA retune)
-    danger:  '#B85450', // muted brick — stays in palette family
+    success:   '#6B8060', // earthy.sageDeep
+    warning:   '#AE5525', // earthy.terracotta (post-AA retune)
+    danger:    '#B85450', // muted brick — stays in palette family
+    // Error-alert pair for inline form errors and toast surfaces. Was
+    // inlined as `bg-[#F8E5DF] text-[#8A3A2E]` in 5+ web surfaces (SignUp,
+    // AuthAction, ForgotPassword) before being lifted to tokens (audit F-W03,
+    // brief Task 12). errorBg + errorText paired together pass WCAG AA on
+    // body text (~7:1).
+    errorBg:   '#F8E5DF',  // inline error pill background (added 2026-05-22)
+    errorText: '#8A3A2E',  // inline error pill text (added 2026-05-22)
   },
 } as const
 
