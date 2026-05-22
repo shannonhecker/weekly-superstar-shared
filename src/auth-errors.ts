@@ -7,8 +7,13 @@ const MESSAGES: Record<string, string> = {
   'auth/operation-not-allowed': "This sign-in method isn't enabled. Contact support.",
   'auth/weak-password': 'Password is too short — use at least 6 characters.',
   'auth/user-disabled': 'This account has been disabled.',
-  'auth/user-not-found': 'No account found with that email.',
-  'auth/wrong-password': 'Incorrect password. Try again.',
+  // Both 'user-not-found' and 'wrong-password' are collapsed to a single
+  // generic message to prevent email enumeration (an attacker can otherwise
+  // probe which addresses have accounts by distinguishing the two responses).
+  // Matches the local-wrapper override behaviour on web + iOS so direct
+  // imports of this map also get the safe copy.
+  'auth/user-not-found': 'Email or password is incorrect.',
+  'auth/wrong-password': 'Email or password is incorrect.',
   'auth/invalid-credential': 'Incorrect email or password.',
   'auth/invalid-login-credentials': 'Incorrect email or password.',
   'auth/missing-email': 'Enter your email to reset your password.',
