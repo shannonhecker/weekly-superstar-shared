@@ -5,6 +5,7 @@ export default defineConfig({
     'src/index.ts',
     'src/tokens/index.ts',
     'src/themes.ts',
+    'src/petContent.ts',
     'src/week.ts',
     'src/auth-errors.ts',
     'src/codes.ts',

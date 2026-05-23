@@ -29,33 +29,72 @@ export const THEMES: Record<string, { emoji: string; accent: string; deeper: str
   fox:      { emoji: '🦊', accent: '#EFCDB6', deeper: '#8C5A3D', label: 'Fox',      tagline: '🦊 🌷 ☁️' },
 }
 
-export const PET_CHAINS: Record<string, { label: string; stages: string[]; names: string[] }> = {
-  cats:      { label: 'Cat family',      stages: ['🐱', '🐈', '🐯', '🦁'], names: ['kitten', 'cat', 'tiger', 'lion'] },
-  dogs:      { label: 'Dog family',      stages: ['🐶', '🐕', '🦊', '🐺'], names: ['puppy', 'dog', 'fox', 'wolf'] },
-  birds:     { label: 'Bird family',     stages: ['🐥', '🐤', '🦆', '🦢'], names: ['chick', 'fledgling', 'duck', 'swan'] },
-  dinos:     { label: 'Dino family',     stages: ['🦎', '🐊', '🦖', '🐉'], names: ['lizard', 'croc', 'T-rex', 'dragon'] },
-  sea:       { label: 'Sea family',      stages: ['🐠', '🐬', '🦈', '🐳'], names: ['fish', 'dolphin', 'shark', 'whale'] },
-  bugs:      { label: 'Garden family',   stages: ['🐛', '🐌', '🐝', '🦋'], names: ['caterpillar', 'snail', 'bee', 'butterfly'] },
-  bears:     { label: 'Bear family',     stages: ['🐨', '🐼', '🐻', '🐻‍❄️'], names: ['koala', 'panda', 'bear', 'polar bear'] },
-  royal:     { label: 'Royal family',    stages: ['🐸', '👸', '👑', '🏰'], names: ['frog prince', 'princess', 'crown', 'castle'] },
-  space:     { label: 'Space family',    stages: ['👽', '🛸', '🚀', '🌟'], names: ['alien', 'UFO', 'rocket', 'star'] },
-  plants:    { label: 'Plant family',    stages: ['🌱', '🌿', '🌸', '🌳'], names: ['seedling', 'herb', 'blossom', 'tree'] },
-  sweets:    { label: 'Sweet family',    stages: ['🍪', '🧁', '🎂', '🍰'], names: ['cookie', 'cupcake', 'cake', 'slice'] },
-  weather:   { label: 'Weather family',  stages: ['💧', '🌧️', '🌈', '☀️'], names: ['droplet', 'rain cloud', 'rainbow', 'sunshine'] },
-  mythic:    { label: 'Mythic family',   stages: ['🪄', '🔮', '🧚', '🧙'], names: ['wand', 'crystal ball', 'fairy', 'wizard'] },
-  robots:    { label: 'Robot family',    stages: ['⚙️', '🤖', '🦾', '🛰️'], names: ['gear', 'robot', 'mech', 'satellite'] },
-  vehicles:  { label: 'Vehicle family',  stages: ['🛴', '🚲', '🏍️', '🏎️'], names: ['scooter', 'bike', 'motorbike', 'race car'] },
-  gems:      { label: 'Treasure family', stages: ['🪨', '💎', '💍', '🏆'], names: ['rock', 'gem', 'ring', 'trophy'] },
-  balls:     { label: 'Ball family',     stages: ['⚽', '🏀', '🏈', '🏉'], names: ['soccer ball', 'basketball', 'football', 'rugby'] },
-  trains:    { label: 'Train family',    stages: ['🚂', '🚃', '🚆', '🚄'], names: ['steam engine', 'wagon', 'tram', 'bullet train'] },
-  planes:    { label: 'Sky family',      stages: ['🪁', '🎈', '✈️', '🚁'], names: ['kite', 'balloon', 'plane', 'helicopter'] },
-  moons:     { label: 'Moon family',     stages: ['🌑', '🌒', '🌓', '🌕'], names: ['new moon', 'crescent', 'half moon', 'full moon'] },
-  sun:       { label: 'Sunny family',    stages: ['⛅', '🌤️', '🌞', '☀️'], names: ['cloudy', 'partly sunny', 'smiling sun', 'sunshine'] },
-  stars:     { label: 'Star family',     stages: ['⭐', '🌟', '✨', '💫'], names: ['star', 'glowing star', 'sparkles', 'dizzy'] },
-  phoenix:   { label: 'Phoenix family',  stages: ['🥚', '🔥', '🐦', '🦅'], names: ['egg', 'ember', 'firebird', 'phoenix'] },
-  celestial: { label: 'Celestial family',stages: ['🌌', '☄️', '🌠', '🌟'], names: ['galaxy', 'comet', 'shooting star', 'star'] },
-  mermaid:   { label: 'Mermaid family',  stages: ['🐚', '🪸', '🧜', '🌊'], names: ['shell', 'coral', 'mermaid', 'ocean'] },
-  ninja:     { label: 'Ninja family',    stages: ['🥷', '⚔️', '🏯', '👑'], names: ['ninja', 'swords', 'castle', 'crown'] },
+export type PetChainStageLabels = readonly [string, string, string, string, string, string]
+
+export type PetChain = {
+  label: string
+  stages: string[]
+  names: string[]
+  // Stage labels indexed by stage 1-6 (egg / stage 0 excluded — pre-hatch
+  // surfaces use the egg name instead). Keeps chain-specific copy ("Tiny
+  // kitten" → "Lion king") colocated with the chain's emoji + name arrays
+  // so drift between the three lines is visible in one diff.
+  stageLabels: PetChainStageLabels
+}
+
+export const PET_CHAINS: Record<string, PetChain> = {
+  cats:      { label: 'Cat family',      stages: ['🐱', '🐈', '🐯', '🦁'], names: ['kitten', 'cat', 'tiger', 'lion'],
+               stageLabels: ['Tiny kitten', 'Curious kitten', 'Smart cat', 'Brave cat', 'Fierce tiger', 'Lion king'] },
+  dogs:      { label: 'Dog family',      stages: ['🐶', '🐕', '🦊', '🐺'], names: ['puppy', 'dog', 'fox', 'wolf'],
+               stageLabels: ['Sleepy puppy', 'Playful puppy', 'Loyal dog', 'Clever dog', 'Quick fox', 'Wolf chief'] },
+  birds:     { label: 'Bird family',     stages: ['🐥', '🐤', '🦆', '🦢'], names: ['chick', 'fledgling', 'duck', 'swan'],
+               stageLabels: ['Fluffy chick', 'Tiny chick', 'Bold fledgling', 'Brave fledgling', 'Splashy duck', 'Graceful swan'] },
+  dinos:     { label: 'Dino family',     stages: ['🦎', '🐊', '🦖', '🐉'], names: ['lizard', 'croc', 'T-rex', 'dragon'],
+               stageLabels: ['Mini lizard', 'Crawly lizard', 'Snappy croc', 'Hungry croc', 'Mighty T-rex', 'Fire dragon'] },
+  sea:       { label: 'Sea family',      stages: ['🐠', '🐬', '🦈', '🐳'], names: ['fish', 'dolphin', 'shark', 'whale'],
+               stageLabels: ['Little fish', 'Bubbly fish', 'Smart dolphin', 'Speedy dolphin', 'Toothy shark', 'Giant whale'] },
+  bugs:      { label: 'Garden family',   stages: ['🐛', '🐌', '🐝', '🦋'], names: ['caterpillar', 'snail', 'bee', 'butterfly'],
+               stageLabels: ['Wiggly caterpillar', 'Hungry caterpillar', 'Slow snail', 'Cozy snail', 'Buzzy bee', 'Bright butterfly'] },
+  bears:     { label: 'Bear family',     stages: ['🐨', '🐼', '🐻', '🐻‍❄️'], names: ['koala', 'panda', 'bear', 'polar bear'],
+               stageLabels: ['Sleepy koala', 'Tree koala', 'Bamboo panda', 'Cuddly panda', 'Strong bear', 'Polar bear king'] },
+  royal:     { label: 'Royal family',    stages: ['🐸', '👸', '👑', '🏰'], names: ['frog prince', 'princess', 'crown', 'castle'],
+               stageLabels: ['Lucky toad', 'Frog prince', 'Kind princess', 'Bold princess', 'Shining crown', 'Royal castle'] },
+  space:     { label: 'Space family',    stages: ['👽', '🛸', '🚀', '🌟'], names: ['alien', 'UFO', 'rocket', 'star'],
+               stageLabels: ['Tiny alien', 'Friendly alien', 'Spinning UFO', 'Zoomy UFO', 'Big rocket', 'Shining star'] },
+  plants:    { label: 'Plant family',    stages: ['🌱', '🌿', '🌸', '🌳'], names: ['seedling', 'herb', 'blossom', 'tree'],
+               stageLabels: ['Baby seedling', 'Green seedling', 'Tiny herb', 'Leafy herb', 'Pretty blossom', 'Tall tree'] },
+  sweets:    { label: 'Sweet family',    stages: ['🍪', '🧁', '🎂', '🍰'], names: ['cookie', 'cupcake', 'cake', 'slice'],
+               stageLabels: ['Warm cookie', 'Chip cookie', 'Frosty cupcake', 'Sprinkle cupcake', 'Birthday cake', 'Cake slice'] },
+  weather:   { label: 'Weather family',  stages: ['💧', '🌧️', '🌈', '☀️'], names: ['droplet', 'rain cloud', 'rainbow', 'sunshine'],
+               stageLabels: ['Tiny droplet', 'Sparkly droplet', 'Soft rain cloud', 'Big rain cloud', 'Bright rainbow', 'Warm sunshine'] },
+  mythic:    { label: 'Mythic family',   stages: ['🪄', '🔮', '🧚', '🧙'], names: ['wand', 'crystal ball', 'fairy', 'wizard'],
+               stageLabels: ['Tiny wand', 'Sparky wand', 'Glowing crystal', 'Misty crystal', 'Fluttery fairy', 'Wise wizard'] },
+  robots:    { label: 'Robot family',    stages: ['⚙️', '🤖', '🦾', '🛰️'], names: ['gear', 'robot', 'mech', 'satellite'],
+               stageLabels: ['Tiny gear', 'Spinning gear', 'Friendly robot', 'Helpful robot', 'Strong mech', 'Star satellite'] },
+  vehicles:  { label: 'Vehicle family',  stages: ['🛴', '🚲', '🏍️', '🏎️'], names: ['scooter', 'bike', 'motorbike', 'race car'],
+               stageLabels: ['Zippy scooter', 'Speedy scooter', 'Pedal bike', 'Quick bike', 'Roaring motorbike', 'Race car champ'] },
+  gems:      { label: 'Treasure family', stages: ['🪨', '💎', '💍', '🏆'], names: ['rock', 'gem', 'ring', 'trophy'],
+               stageLabels: ['Plain rock', 'Shiny rock', 'Glowing gem', 'Sparkly gem', 'Royal ring', 'Big trophy'] },
+  balls:     { label: 'Ball family',     stages: ['⚽', '🏀', '🏈', '🏉'], names: ['soccer ball', 'basketball', 'football', 'rugby'],
+               stageLabels: ['Bouncy ball', 'Speedy soccer ball', 'Slam basketball', 'Net basketball', 'Spiral football', 'Rugby champ'] },
+  trains:    { label: 'Train family',    stages: ['🚂', '🚃', '🚆', '🚄'], names: ['steam engine', 'wagon', 'tram', 'bullet train'],
+               stageLabels: ['Puff steam engine', 'Whistle steam engine', 'Wobbly wagon', 'Loaded wagon', 'City tram', 'Bullet train'] },
+  planes:    { label: 'Sky family',      stages: ['🪁', '🎈', '✈️', '🚁'], names: ['kite', 'balloon', 'plane', 'helicopter'],
+               stageLabels: ['Tiny kite', 'Soaring kite', 'Floaty balloon', 'Big balloon', 'Speedy plane', 'Whirly helicopter'] },
+  moons:     { label: 'Moon family',     stages: ['🌑', '🌒', '🌓', '🌕'], names: ['new moon', 'crescent', 'half moon', 'full moon'],
+               stageLabels: ['New moon', 'Slim crescent', 'Bright crescent', 'Half moon', 'Big half moon', 'Glowing full moon'] },
+  sun:       { label: 'Sunny family',    stages: ['⛅', '🌤️', '🌞', '☀️'], names: ['cloudy', 'partly sunny', 'smiling sun', 'sunshine'],
+               stageLabels: ['Cloudy day', 'Misty day', 'Partly sunny', 'Warm and sunny', 'Smiling sun', 'Bright sunshine'] },
+  stars:     { label: 'Star family',     stages: ['⭐', '🌟', '✨', '💫'], names: ['star', 'glowing star', 'sparkles', 'dizzy'],
+               stageLabels: ['Tiny star', 'Twinkling star', 'Glowing star', 'Bright glow', 'Sparkle shower', 'Dizzy magic'] },
+  phoenix:   { label: 'Phoenix family',  stages: ['🥚', '🔥', '🐦', '🦅'], names: ['egg', 'ember', 'firebird', 'phoenix'],
+               stageLabels: ['Warm egg', 'Glowing egg', 'Tiny ember', 'Bright ember', 'Firebird', 'Mighty phoenix'] },
+  celestial: { label: 'Celestial family',stages: ['🌌', '☄️', '🌠', '🌟'], names: ['galaxy', 'comet', 'shooting star', 'star'],
+               stageLabels: ['Baby galaxy', 'Spinning galaxy', 'Zoomy comet', 'Bright comet', 'Shooting star', 'Brightest star'] },
+  mermaid:   { label: 'Mermaid family',  stages: ['🐚', '🪸', '🧜', '🌊'], names: ['shell', 'coral', 'mermaid', 'ocean'],
+               stageLabels: ['Pretty shell', 'Shimmer shell', 'Pink coral', 'Bright coral', 'Mermaid friend', 'Deep ocean'] },
+  ninja:     { label: 'Ninja family',    stages: ['🥷', '⚔️', '🏯', '👑'], names: ['ninja', 'swords', 'castle', 'crown'],
+               stageLabels: ['Mini ninja', 'Quiet ninja', 'Swift swords', 'Sharp swords', 'Hidden castle', 'Royal crown'] },
 }
 
 export function stageToChainIdx(stage: number, chainLen: number): number {
