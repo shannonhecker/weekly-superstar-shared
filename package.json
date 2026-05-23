@@ -1,6 +1,6 @@
 {
   "name": "@weekly-superstar/shared",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared design tokens + domain logic for Weekly Superstar (iOS + web).",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -24,6 +24,12 @@
       "import": "./dist/themes.js",
       "require": "./dist/themes.cjs",
       "default": "./dist/themes.js"
+    },
+    "./petContent": {
+      "types": "./dist/petContent.d.ts",
+      "import": "./dist/petContent.js",
+      "require": "./dist/petContent.cjs",
+      "default": "./dist/petContent.js"
     },
     "./week": {
       "types": "./dist/week.d.ts",
