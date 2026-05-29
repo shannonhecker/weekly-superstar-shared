@@ -79,6 +79,11 @@ export const colors = {
     // too prominent. Was inlined as `'#EFE1C8'` at Board.jsx:961 + 1065
     // for the kid stats progress bar (audit F-W12, brief Task 12).
     dividerCream:        '#EFE1C8',  // soft divider for progress bars on cream
+    // Phone-bezel near-black gradient — used by /dev/peek/* dev-only routes for
+    // screenshot capture framing. Lives in tokens so onboarding spec rule
+    // "no inline hex" holds. Used: PhoneBezel.jsx.
+    bezelDeep:           '#1A1410',
+    bezelDeepest:        '#0F0A07',
   },
 
   // Semantic tokens map onto the earthy palette so success / warning /
