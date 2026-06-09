@@ -309,6 +309,13 @@ export const PET_ASSET: Record<string, [string, string]> = {
   '🥷': ['People', 'Ninja'],
   '⚔️': ['Objects', 'Crossed Swords'],
   '🏯': ['Travel and places', 'Japanese Castle'],
+  // Pet-surface chrome + the two rare stickers that had no asset: 🐾 is
+  // the "Pet pals" section header (PetGallery / PetPalsCarousel), 🎆/🎇
+  // are in PetGallery's RARE_STICKERS set. All three paths verified 200
+  // on jsdelivr 2026-06-09.
+  '🐾': ['Animals', 'Paw Prints'],
+  '🎆': ['Activities', 'Fireworks'],
+  '🎇': ['Activities', 'Sparkler'],
 }
 
 export function animatedFluentUrl(emoji: string): string | null {
